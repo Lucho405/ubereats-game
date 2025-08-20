@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Jeu Uber Eats</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f9f9f9; padding:20px; }
+    .choice { margin:10px 0; padding:10px; background:#eee; border-radius:8px; cursor:pointer; }
+    .choice:hover { background:#ddd; }
+    #result { margin-top:20px; font-weight:bold; }
+  </style>
+</head>
+<body>
+  <h2>Scénario : Uber Eats</h2>
+  <p>Il est 20h30, tu as faim. Que fais-tu ?</p>
+
+  <div class="choice" onclick="play(1)">🍔 Commander un burger sur Uber Eats</div>
+  <div class="choice" onclick="play(2)">🍕 Aller chercher une pizza au coin de la rue</div>
+  <div class="choice" onclick="play(3)">🥗 Cuisiner avec ce que tu as</div>
+
+  <div id="result"></div>
+
+  <script>
+    function play(choice) {
+      let texte = "";
+      if (choice === 1) {
+        texte = "🚴 Le livreur gagne ~2,80€. Compte peut-être loué à un sans-papier. Tu es complice… ou joueur ?";
+      } else if (choice === 2) {
+        texte = "🏃 Tu choisis d’aller chercher toi-même → +20 points Liberté Active.";
+      } else if (choice === 3) {
+        texte = "🥦 Tu cuisines toi-même → +50 points Symbiose.";
+      }
+      document.getElementById("result").innerHTML = texte;
+    }
+  </script>
+</body>
+</html>
