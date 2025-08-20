@@ -3,52 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Jeu Uber Eats</title>
+  <title>Hub des jeux Symbiose</title>
   <style>
-    body { font-family: system-ui, Arial, sans-serif; background:#f7f7f7; margin:0; padding:24px; }
-    .card { max-width: 760px; margin: 0 auto; background:#fff; border-radius:14px; padding:24px; box-shadow:0 8px 24px rgba(0,0,0,.08); }
-    h1 { font-size:22px; margin:0 0 8px; }
-    p { margin: 0 0 14px; line-height:1.5; }
-    .choice { display:block; margin:10px 0; padding:12px 14px; border-radius:10px; background:#f0f0f0; border:0; cursor:pointer; font-size:16px; }
-    .choice:hover { background:#e6e6e6; }
-    .result { margin-top:14px; padding:12px 14px; border-radius:10px; background:#f7faff; }
-    .score  { margin-top:10px; font-weight:600; }
+    body { font-family: system-ui, Arial, sans-serif; background:#f7f7f7; margin:0; padding:40px; text-align:center; }
+    h1 { font-size:26px; margin-bottom:24px; }
+    .menu { display:flex; flex-direction:column; gap:14px; max-width:400px; margin:auto; }
+    a { display:block; padding:14px; border-radius:10px; text-decoration:none; font-size:18px; background:#4CAF50; color:white; transition:.2s; }
+    a:hover { background:#45a049; }
+    footer { margin-top:40px; font-size:14px; color:#555; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Il est 20h30, tu as faim. Que fais-tu ?</h1>
-    <button class="choice" data-choice="1">🍔 Commander sur Uber Eats</button>
-    <button class="choice" data-choice="2">🍕 Aller chercher au coin de la rue</button>
-    <button class="choice" data-choice="3">🥗 Cuisiner avec ce que tu as</button>
+  <h1>🎮 Hub des jeux Symbiose</h1>
+  <p>Choisis ton scénario :</p>
 
-    <div id="result" class="result" hidden></div>
-    <div id="score" class="score"></div>
+  <div class="menu">
+    <a href="uber.html">🍔 Uber Eats</a>
+    <a href="zara.html">👕 Fast Fashion (Zara)</a>
+    <a href="amazon.html">📦 Amazon</a>
   </div>
 
-  <script>
-    // Petit score stocké localement pour tester
-    const LS_KEY = 'symbiose_points';
-    const getPts = () => Number(localStorage.getItem(LS_KEY) || 0);
-    const setPts = v => localStorage.setItem(LS_KEY, String(v));
-
-    const result = document.getElementById('result');
-    const score  = document.getElementById('score');
-    score.textContent = `Score Symbiose local : ${getPts()} pts`;
-
-    function play(choice){
-      let txt = "", delta = 0;
-      if (choice === 1) { txt = "🚴 Le livreur gagne ~2,80 €. Compte possiblement loué 150 €/mois. Tu es complice… ou joueur ?"; delta = 0; }
-      if (choice === 2) { txt = "🏃 Tu vas chercher toi-même → +20 pts Liberté active."; delta = 20; }
-      if (choice === 3) { txt = "🥦 Tu cuisines → +50 pts Symbiose."; delta = 50; }
-      const total = getPts() + delta; setPts(total);
-      result.hidden = false; result.textContent = txt;
-      score.textContent = `Score Symbiose local : ${total} pts`;
-    }
-
-    document.querySelectorAll('.choice').forEach(btn=>{
-      btn.addEventListener('click', ()=> play(Number(btn.dataset.choice)));
-    });
-  </script>
+  <footer>© Symbiose Horizon – Expériences ludiques</footer>
 </body>
 </html>
